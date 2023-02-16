@@ -1,0 +1,69 @@
+title Mechanika funduszu oddłużeniowego Agrofotowoltaicznego (AFV)
+
+participant "Bank\n wierzyciel" as b
+participant "Inwestor FV\n najemca gruntu" as i
+participant "Zadłużony rolnik\n właściciel gruntu" as r #pink
+
+participant "Fundusz\nAFV" as f #lightgreen
+participant "Prawnik\nJacek" as p
+participant "Sąd\nhipoteka" as h
+participant "Rynek\n investorów\nindywidualnych" as u
+
+r->b:<align:center>Powstanie\nniespłacalego zadłużenia
+activate b
+activate r #pink
+b->r:<align:center>Dawaj kasę 150zł\nalbo ziemia pod młotek
+i->r:<align:center>Chcę wydzierżawić\ntwój grunt pod FV na 30 lat
+activate i
+
+r->f:<align:center>Ratunku!\nOchrońmy ziemię\npotrzebna 150zł dla Banku
+activate f #lightgreen
+f->p:<align:center>Przygotuj umowę\nDywidenda roczna jako\n% od wsadu startowego (np.20%)\n+kapitał chroniony hipoteką.
+activate p
+f->u: Kto chce zainwestować?
+activate u
+p->f: <align:center>umowa\ndywidenda + hipoteka
+f->r: <align:center>umowa\ndywidenda + hipoteka
+r->f: Podpisałem, działać!
+f->p: OK, działać!
+p-#red>h: <align:center>Zapis w KW
+activate h
+h->f: <align:center>Wasz kapitał\njest chroniony zapisem w\n4. dziale KW aktu własności gruntu.
+f-#red>p:<align:center>Honorarium1
+deactivate p
+
+f->r:<align:center>Wchodzimy\npodpisz umowę\no corocznej wypłacie dywidendy
+r->f:<align:center>Podpisałem
+u->f:Wpłacamy na fundusz 150zł
+f-#red>b:Masz tu 150 zł.
+deactivate b
+i->r: Opłata za dzierżawę (rok 1 z 10.)
+r-#green>f:Dywidenda
+f-#green>u: Dywidenda proporcjonalnie do udziału dla Inw.1, Inw.2, Inw.3
+i->r:...
+r-#green>f:...
+f-#green>u:...
+i->r: Opłata za dzierżawę (rok 10 z 10)
+r-#green>f:Dywidenda
+f-#green>u: Dywidenda ... dla Inw.1, Inw.2, Inw.3
+i->r:Dalsze opłaty za dzierżawę 
+r-#green>f:<align:center>Zwrot kapitału\nwaloryzowanego o inflację
+f->u:Zwracamy kapitał Inw.1, Inw.2, Inw.3
+u->f:<align:center>Kapitał zwrócony\nmożna zejść z hipoteki
+deactivate u
+f->p:<align:center>Wystąp do sądu\no zmianę w hipotece
+activate p
+f-#red>p:Honorarium2
+p->h:Schodzimy z hipoteki
+deactivate p
+deactivate h
+deactivate f
+i->r:Dalsze opłaty za dzierżawę 
+i->r:...
+deactivate f
+
+
+//Kto wchodzi, fundusz, czy udziałowcy funduszu? Czy fundusz ma osobowość prawną?
+//Jak zabezpieczyć się na wypadek, że r nie dostanie opłaty za dzierżawę?
+//Czy AFV jest bytem bezosobowym?
+//Potrzebna jest pula wspólna na obsługę życia funduszu.
